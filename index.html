@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-     <title>Title goes here!</title>
+     <title>DOM Play</title>
   <meta charset="utf-8" />
   <meta name="robots" content="noindex,nofollow" />
   <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/nav.css" />
-  
-
-  </head>
+  <style>
+     /* 
+      div#play span {
+          background-color:yellow;
+      }
+      */
+      
+  </style>
+ </head>
  <body>
-     <header>
-     <h1>Title goes here!</h1>
-        <nav class="topnav" id="myTopnav">
-            <a href="index.html" class="active">Home</a>
-            <a href="#" target="_blank">Name of the project</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
-        </nav>
-     </header>
-     
+    <header>
+    <h1>DOM Play </h1>
+    </header>
+    
    <main class="wrapper">
-  <p>Content goes here</p>
-
+    <p><strong>The code that we wrote uses JavaScript  data attributes and a NodeList to highlight actors in a play by clicking on the name of the actor.</strong></p>
+        <div id="play">
+        <p><span data-actor="vicki">VICKI:Strange.He gives to humanitarian causes... And collects all this...</span></p>
+        <p><span data-actor="knox">KNOX:Probably does it to get chicks.They like him for his big charity</span></p>
+        <p><span data-actor="vicki">VICKI:(mischievous) I think it's his enormous...bankroll they go for.</span></p>
+        <p><span data-actor="knox">KNOX:Hey, the more they've got, the less they're worth.</span></p>
+        <p><span data-actor="vicki">VICKI:This guy must be the most worthless man in America.</span></p>
+        <p><span data-actor="knox">KNOX: (pointing to a sword) Where'd this come from?</span></p>
+        <p><span data-actor="bruce">BRUCE:It's Japanese.</span></p>
+        <p><span data-actor="knox">KNOX:How do you know?</span></p>
+        <p><span data-actor="bruce">BRUCE:Because I got it in Japan.</span></p>
+        <p><span data-actor="knox">KNOX: Who are you?</span></p>
+        <p><span data-actor="bruce">BRUCE: Oh... Bruce Wayne.</span></p>
+        <p><span data-actor="knox">KNOX:(extending a hand) Alexander Knox.</span></p>
+        <p><span data-actor="bruce">BRUCE(genuine) I read (present tense) your work.I like it.</span></p>
+        <p><span data-actor="vicki">VICKI: Vicki Vale..</span></p>
+        <p><span data-actor="bruce">BRUCE: Bruce Wayne.</span></p>
+        <p><span data-actor="vicki"> VICKI:(smile and edge)... You sure?</span></p>
+        <p><span data-actor="bruce">BRUCE(smile)I've seen your photographs from Corto Maltese -- You've got an extraordinary eye.</span></p>
+        <p><span data-actor="knox">KNOX:Some people think she has two.</span></p>
+        <p><span data-actor="vicki">VICKI: This is an amazing house.  I'd love to shoot it sometime.</span></p>
+    </div>
      <footer>
       <p><small>&copy; 2021 by 
           Daniela Cubreacov, All Rights Reserved ~ 
@@ -31,7 +52,34 @@
      </p>
     </footer>
   </main>
-  <script src="js/main.js"></script>
-     
- </body>
+  <script>
+
+const spans =  document.querySelectorAll('div#play span')
+    console.log(spans);
+
+    for(const mySpan of spans){
+        mySpan.addEventListener('click',function(ev){
+        //alert(mySpan.dataset.actor);
+        highlightActor(mySpan.dataset.actor);
+        });
+    }
+    
+    function highlightActor(myActor){
+
+
+    for(const mySpan of spans){
+
+        if (myActor ==mySpan.dataset.actor){
+            mySpan.style.backgroundColor = 'yellow';
+
+        }else{
+            mySpan.style.backgroundColor = 'white';
+        }
+        }
+
+    } 
+
+</script>
+<script src="js/main.js"></script>
+</body>
 </html>
